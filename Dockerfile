@@ -28,7 +28,7 @@ RUN mvn clean package -Dmaven.test.skip=true
 FROM openjdk:20-slim
 WORKDIR /app
 
-COPY --from=mvnbuilder /app/target/server-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=mvnbuilder /app/target/merlionhome.jar app.jar
 
 
 ENV S3_KEY_ACCESS=${S3_KEY_ACCESS}
@@ -43,4 +43,4 @@ ENV SPRING_DATASOURCE_USERNAME=${SPRING_DATASOURCE_USERNAME}
 ENV SPRING_DATASOURCE_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
 
 
-CMD java -jar /app.jar
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
