@@ -12,8 +12,8 @@ COPY miniprojectfronttry/tsconfig.spec.json .
 
 RUN npm i -g @angular/cli
 RUN npm i
-
 RUN ng build
+
 
 FROM maven:3-eclipse-temurin-20 AS mvnbuilder
 WORKDIR /app
@@ -22,14 +22,14 @@ COPY miniprojectbackend/miniprojectbackend/mvnw mvnw
 COPY miniprojectbackend/miniprojectbackend/pom.xml .
 COPY --from=angbuilder /app/dist/client /app/src/main/resources/static
 
-
 RUN mvn clean package -Dmaven.test.skip=true
 
 
-From openjdk:20-slim
+FROM openjdk:20-slim
 WORKDIR /app
 
 COPY --from=mvnbuilder /app/target/server-0.0.1-SNAPSHOT.jar app.jar
+
 
 ENV S3_KEY_ACCESS=${S3_KEY_ACCESS}
 ENV S3_KEY_SECRET=${S3_KEY_SECRET}
