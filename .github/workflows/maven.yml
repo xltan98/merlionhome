@@ -51,7 +51,7 @@ jobs:
         image: xltan98/merlionhome  
         tags: v1, latest
         registry: docker.io
-        dockerfile: Dockerfile.ci
+        dockerfile: miniprojectbackend/miniprojectbackend/Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
