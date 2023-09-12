@@ -1,0 +1,85 @@
+/* .glass-container {
+
+
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+  }
+  
+  .center-container {
+    
+    width: 100%; 
+    max-width: 400px; 
+  }
+  
+  .form-field-wrapper {
+    margin-bottom: 16px;
+    width: 100%;
+  } */
+ 
+  
+    .glass-container {
+        background: rgba(255, 255, 255, 0.15); /* Background color with transparency */
+        border-radius: 15px; /* Rounded corners */
+        padding: 20px; /* Add padding for content spacing */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+        backdrop-filter: blur(10px); /* Blur effect for the container background */
+      }
+      
+      /* Additional styles for improved visibility and spacing */
+      .glass-container h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+  
+  
+      .flex-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        background: rgba(47, 44, 44, 0.514);
+        border: 2px solid #fffaf19f;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(47, 44, 44, 0.794); /* Adjust the shadow properties */
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 95%;
+        min-width: 500px;
+        padding: 30px;
+        position: relative;
+        text-align: center;
+        color: #fffaf1;
+        font-family: Calibri;
+      }
+      
+      .flex-content {
+        display: flex; /* Use flex for the inner content */
+        flex-wrap: wrap; /* Allow the content to wrap if it overflows */
+        justify-content: space-between; /* Adjust as needed */
+      }
+      
+      .form {
+        flex: 1;
+        margin-right: 20px; /* Adjust spacing between form and result section */
+      }
+      
+      .result {
+        flex: 1; /* Make both .form and .result elements equally flexible */
+        max-width: 30%; /* Adjust the width as needed */
+        text-align: center;
+        color: #fffaf1;
+        font-family: Calibri;
+      }
+      
+      .glass-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center items horizontally */
+        justify-content: center; /* Center items vertically */
+        min-height: 100vh; /* Ensure the container takes up at least the viewport height */
+        background-image: url("https://images.unsplash.com/photo-1525625293386-3f8f99389edd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2852&q=80");
+        background-size: cover; /* Scale the image to cover the entire container */
+        background-position: center; /* Center the image horizontally and vertically */
+        background-repeat: no-repeat; /* Prevent the image from repeating */
+      }

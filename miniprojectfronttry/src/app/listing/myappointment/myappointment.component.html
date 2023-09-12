@@ -1,0 +1,33 @@
+
+
+   <div *ngFor="let a of apps,let i=index" class="apps-item">
+    <mat-card>
+      <div class="card-content">
+        <mat-card-header>
+          <mat-card-title [style.fontSize.px]="16">
+            Address: {{a.address}}<br>
+            Date: {{a.date}}<br>
+            Time: {{a.time}}<br>
+            Agent: {{a.agentId | titlecase}}
+            <a href="https://wa.me" target="_blank" class="whatsapp-button">
+              <span>WhatsApp</span>
+            </a>
+          </mat-card-title>
+          <mat-card-title [style.fontSize.px]="16">
+            Current Status:
+            <span [ngStyle]="{'color': a.status === 'confirmed' ? 'green' : a.status === 'cancelled' ? 'red' : a.status === 'unconfirmed' ? 'orange' : 'inherit'}">
+              {{ a.status }}
+            </span>
+            <span *ngIf="a.status === 'unconfirmed'" style="color: orange; font-style: italic;"> (Pending Agent)</span>
+            <br>
+            <span *ngIf="a.status === 'confirmed'" style="color: orange; font-style: italic;"> Please contact your agent for cancellation</span>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-actions>
+          <button mat-flat-button color="warn" type="button" [disabled]="a.status === 'confirmed'" (click)="cancelAppointment(i)">Cancel Appointment</button>
+        </mat-card-actions>
+      </div>
+    </mat-card>
+            
+      </div>
+      

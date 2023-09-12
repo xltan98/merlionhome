@@ -1,0 +1,53 @@
+
+
+<form [formGroup]="formsearch">
+  <mat-form-field class="long-search-bar">
+    <mat-label>Search</mat-label>
+    <input matInput placeholder="Search" formControlName="search">
+    <button mat-button matSuffix (click)="onSubmit()">
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
+</form>
+
+    <form [formGroup]="form">
+
+    <button (click)="previousPage()" [disabled]="pageNo<=1">Previous page</button>
+    {{pageNo}}
+    <button (click)="nextPage()" [disabled]="pageNo>listings.length/5">Next Page</button>
+    
+   
+   
+
+      <div *ngFor="let l of listings" class="listing-item">
+        <mat-card>
+          <div class="card-content">
+            <img mat-card-image [src]="'https://xinlitan98.sgp1.digitaloceanspaces.com/image/' + l.images[0]" width="300px">
+            <div class="text-content">
+              <mat-card-header>
+                <mat-card-title>{{l.price | currency:'$':'symbol':'1.2-2'}}</mat-card-title>
+                <mat-card-title>
+                  <mat-icon>location_on</mat-icon>
+                  {{l.address}}
+                </mat-card-title>
+                <mat-card-subtitle>{{l.flatType}}</mat-card-subtitle>
+                <mat-card-subtitle>{{l.storey}} floor</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-actions>
+                <button mat-button class="orange-button" [routerLink]="l.uploadId">More Details</button>
+              </mat-card-actions>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+      
+
+</form>
+      
+      
+      
+      
+  
+  
+
+

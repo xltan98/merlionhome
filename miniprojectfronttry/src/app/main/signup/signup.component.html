@@ -1,0 +1,55 @@
+<div class="glass-container">
+    <h2 mat-dialog-title class="text-center">Sign Up</h2>
+    <form [formGroup]="form" (submit)="signup()">
+        <div mat-dialog-content style="margin-top:-1em;">
+            <mat-form-field>
+                <mat-label>Username</mat-label>
+                <input matInput type="text" formControlName="id" (keyup)="validateUsername()"/>
+                <mat-hint>
+                    <ng-container *ngIf="form.dirty && !validUsername"><span style="color:red;">Username has been taken.</span></ng-container>
+                    User id  cannot be changed after it has been set.
+                </mat-hint>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput type="password" formControlName="password"/>
+                <mat-hint>Minimum 8 characters</mat-hint>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Confirm Password</mat-label>
+                <input matInput type="password" formControlName="confirmPassword">
+                <mat-hint *ngIf="form.value['password'] != form.value['confirmPassword']"><span style="color: red;">Passwords do not match.</span></mat-hint>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput type="text" formControlName="name" />
+            </mat-form-field>
+            <mat-form-field style="width: 49%; margin-right: 2%;">
+                <mat-label>Phone</mat-label>
+                <input matInput type="text" formControlName="phone" />
+            </mat-form-field>
+            <mat-form-field style="width: 49%;">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" formControlName="email" />
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Role</mat-label>
+                <mat-select formControlName="role">
+        
+                    <mat-option value="Buyer">Buyer</mat-option>
+                    <mat-option value="Agent">Agent</mat-option>
+                </mat-select>
+                
+            </mat-form-field>
+            <ng-container *ngIf="!!errMsg">
+                <br>
+                <span style="color: red">{{ errMsg }}</span>
+            </ng-container>
+        </div>
+        <div align="end" mat-dialog-actions>
+            <button mat-button type="button" mat-dialog-close style="margin-right: 1em;">Cancel</button>
+            <button mat-flat-button color="primary" type="submit" [disabled]="invalid()">Sign up</button>
+        </div>
+    </form>
+</div>

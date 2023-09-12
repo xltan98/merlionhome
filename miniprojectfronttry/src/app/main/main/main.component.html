@@ -1,0 +1,67 @@
+<mat-toolbar class="custom-toolbar-color">
+    <mat-toolbar-row>
+        <span [routerLink]="['/']" class="merlionHome">Merlion Home<img src="/assets/merlionlogol.png"
+                alt="logo" style="width: 24px; height: 25px;"></span>
+        <span class="spacer"></span>
+        <ng-container *ngIf="storageSvc.isLoggedIn() else notLoggedIn">
+            <button mat-flat-button color="warn" type="button"
+                [routerLink]="['/user', storageSvc.getUser()]"style="margin-right: 0.5em;"><span *ngIf="!!serverSvc.user"> Start Here</span></button>
+                   
+            <button mat-flat-button color="primary" type="button" (click)="logout()">Logout</button>
+           
+        </ng-container>
+        <ng-template #notLoggedIn>
+            <button mat-flat-button color="primary" type="button" (click)="login()" class="button-spacing">Login</button>
+            <button mat-flat-button color="primary" type="button" (click)="signup()" class="button-spacing">Sign Up</button>
+
+        </ng-template>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+
+<div class="hero">
+    
+    <div>
+        <h1 style="margin-top: 2em;">Merlion Home</h1>
+        <div *ngIf="storageSvc.getUser().length > 0">
+            <h2>Welcome back, {{ storageSvc.getUser() |titlecase}} !</h2>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="column">
+        <img src="/assets/predictive-chart.png" />
+        <p>Predict many years ahead!</p>
+    </div>
+    <div class="column">
+        <img src="/assets/home.png" />
+        <p>Save up to get your dream home!</p>
+    </div>
+    <div class="column">
+        <img src="/assets/smile.png" />
+        <p>Friendly agents to help you with your journey</p>
+    </div>
+</div>
+<div class="section2">
+    <div class="side-image">
+
+    </div>
+    <div class="side-text">
+        <div>
+            <h2 class="meowpos">Your one stop destination to achieve your ideal home
+            </h2>
+            <p>Buying house made easy!</p>
+        </div>
+        
+    </div>
+</div>
+
+<div class="section" style="margin-top:-40px;">
+    <div class="column">
+        <img src="/assets/home.avif" alt="logo"
+            style="max-height: 30vh; height: 96px; width: auto;">
+        <h2 class="meowpos">Start journey in less than 5 minutes</h2>
+        <button mat-flat-button color="primary" (click)="signup()" type="button">Sign up here!</button>
+    </div>
+</div>

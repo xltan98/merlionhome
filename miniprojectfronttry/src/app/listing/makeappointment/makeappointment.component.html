@@ -1,0 +1,41 @@
+<div class="glass-container">
+    <div *ngIf="listing && uploadId">
+    <h2 mat-dialog-title class="text-center">Appointment</h2>
+    <form [formGroup]="form" (submit)="submit()">
+        <div mat-dialog-content style="margin-top:-1em;">
+            <mat-form-field>
+                <mat-label>Date:</mat-label>
+                <input matInput [matDatepicker]="datepicker" formControlName="date"/>
+                <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+                <mat-datepicker #datepicker></mat-datepicker>
+              </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Time:</mat-label>
+                <mat-select formControlName="time">
+                    <mat-option value="10:00">10:00</mat-option>
+                    <mat-option value="11:00">11:00</mat-option>
+                    <mat-option value="12:00">12:00</mat-option>
+                    <mat-option value="13:00">13:00</mat-option>
+                    <mat-option value="14:00">14:00</mat-option>
+                    <mat-option value="15:00">15:00</mat-option>
+                    <mat-option value="16:00">16:00</mat-option>
+                    <mat-option value="17:00">17:00</mat-option>
+                    <mat-option value="18:00">18:00</mat-option>
+                    <mat-option value="19:00">19:00</mat-option>
+                    <mat-option value="20:00">20:00</mat-option> 
+                </mat-select>
+              </mat-form-field>
+           
+            <div class="button-center"  align="end">
+                <button mat-button type="button" mat-dialog-close style="margin-right: 1em;">Cancel</button>
+                <button mat-flat-button color="primary" type="submit" [disabled]="!form.valid">Submit</button>
+
+            </div>
+
+
+        </div>
+       
+    </form>
+</div>
+</div>

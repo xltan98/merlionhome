@@ -1,0 +1,33 @@
+<mat-toolbar class="custom-toolbar-color">
+    <mat-toolbar-row>
+        <span [routerLink]="['/']" class="merlionHome">Merlion Home<img src="/assets/merlionlogol.png"
+            alt="logo" style="width: 30px; height: 30px;"></span>
+        
+        <div class="scrollmenu" fxHide.lt-sm>
+           
+            <button mat-flat-button  color="primary" style="background-color: #134074"type="button" *ngIf="!(storageSvc.getRole() === 'Agent')"[matMenuTriggerFor]="menu">Goals</button>
+            <button mat-flat-button color="primary"style="background-color: #134074" type="button"
+                [routerLink]="['/user', serverSvc.userId,'listing' ]">Property Listings</button>
+            <button mat-flat-button color="primary" style="background-color: #134074" type="button"
+            [routerLink]="['/user', serverSvc.userId,'myappointment' ]"*ngIf="storageSvc.getRole() === 'Buyer'">My Appointments</button>
+            
+            <button mat-flat-button color="primary" style="background-color: #134074" type="button" [routerLink]="['/user', serverSvc.userId, 'upload']" *ngIf="storageSvc.getRole() === 'Agent'">Upload</button>
+            <button mat-flat-button color="primary" style="background-color: #134074" type="button" [routerLink]="['/user', serverSvc.userId, 'mylisting']" *ngIf="storageSvc.getRole() === 'Agent'">My Listing</button>
+            <button mat-flat-button color="primary" style="background-color: #134074" type="button" [routerLink]="['/user', serverSvc.userId, 'agentAppointment']" *ngIf="storageSvc.getRole() === 'Agent'">Appointments</button>
+              
+        </div>
+        <span class="spacer"></span>
+        
+        <button mat-flat-button color="primary" style="background-color: #134074" type="button" (click)="logout()">Logout</button>
+    </mat-toolbar-row>
+    
+</mat-toolbar>
+
+<mat-menu #menu="matMenu">
+    <button mat-menu-item type="button"
+        [routerLink]="['/user', serverSvc.userId,'predict']">Predict</button>
+    <button mat-menu-item type="button" [routerLink]="['/user', serverSvc.userId, 'goal']"*ngIf="storageSvc.getRole() === 'Buyer'">My Goals</button>
+</mat-menu>
+<div class="glass-container">
+    <router-outlet></router-outlet>
+</div>

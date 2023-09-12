@@ -1,0 +1,72 @@
+
+  <div *ngIf="total /ugl[0].predictedValue > 0.9">
+    <h2>Congratulations! You are ready to buy your dream house!</h2>
+  </div>
+
+  <h2>Current Savings & Loan: {{ total | currency:'$':'symbol':'1.2-2' }}</h2>
+
+  <div class="chart-container">
+    <h5>Monthly Savings Chart</h5>
+    <canvas id="MonthChart" width="400" height="200">{{ chart }}</canvas>
+  </div>
+
+  <div class="flex-container">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="form-field-wrapper">
+        <mat-form-field>
+          <mat-label>Amount save/loan</mat-label>
+          <input matInput type="number" formControlName="saving" />
+        </mat-form-field>
+        <button type="submit">+</button>
+      </div>
+    </form>
+  </div>
+
+  <div *ngIf="ugl">
+    <table class="nice-table">
+      <thead>
+        <tr>
+          <th>Year</th>
+          <th>Town</th>
+          <th>Flat Type</th>
+          <th>Storey Range</th>
+          <th>Floor Area (sqm)</th>
+          <th>Flat Model</th>
+          <th>Remaining Lease Year</th>
+          <th>Predicted Value</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let property of ugl; let i = index">
+          <td>{{ property.year }}</td>
+          <td>{{ property.town }}</td>
+          <td>{{ property.flatType }}</td>
+          <td>{{ property.storeyRange }}</td>
+          <td>{{ property.floorAreaSqm }}</td>
+          <td>{{ property.flatModel }}</td>
+          <td>{{ property.remainingLeaseYear }}</td>
+          <td>{{ property.predictedValue }}</td>
+          <td>
+            <button (click)="removeProperty(i)">Remove</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+        
+      
+       
+    
+<!-- <div *ngIf="ugl.length > 0">
+    <div *ngFor="let item of ugl">
+   
+      <p>{{ item.year }}</p>
+    </div>
+  </div>
+  
+  <div *ngIf="ugl.length === 0">
+    No data available.
+  </div>
+   -->

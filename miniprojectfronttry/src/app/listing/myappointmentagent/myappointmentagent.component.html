@@ -1,0 +1,47 @@
+
+<div *ngFor="let a of apps,let i=index" class="apps-item">
+    <mat-card>
+      <div class="card-content">
+        
+        <div class="text-content">
+          <mat-card-header>
+            <mat-card-title  [style.fontSize.px]="16">Address: {{a.address}}</mat-card-title>
+            <mat-card-title [style.fontSize.px]="16">Date: {{a.date}}</mat-card-title>
+            <mat-card-title [style.fontSize.px]="16">Time: {{a.time}}</mat-card-title>
+            <mat-card-title [style.fontSize.px]="16">Customer:{{a.customerId|titlecase}}</mat-card-title>
+            <mat-card-title [style.fontSize.px]="16">
+                Current Status: 
+                <span [ngStyle]="{'color': a.status === 'confirmed' ? 'green' : a.status === 'cancelled' ? 'red' : a.status === 'unconfirmed' ? 'orange' : 'inherit'}">
+                  {{ a.status }}
+                </span>
+                <span *ngIf="a.status === 'unconfirmed'" style="color: orange; font-style: italic;"> (Pending Agent)</span>
+              </mat-card-title>
+            
+            <!-- <mat-card-subtitle>{{l.flatType}}</mat-card-subtitle>
+            <mat-card-subtitle>{{l.storey}} floor</mat-card-subtitle> -->
+          </mat-card-header>
+         
+          <mat-card-actions>
+            <button mat-flat-button color="primary" type="button" (click)="updateStatusConfirmed(i)" [disabled]="a.status==='completed'" >Confirm Appointment</button>
+          </mat-card-actions>
+          <mat-card-actions>
+            <button mat-flat-button color="warn" type="button" (click)="updateStatusCancelled(i)" [disabled]="a.status==='completed'" >Reject Appointment</button>
+          </mat-card-actions>
+          <mat-card-actions>
+            <button mat-flat-button  type="button" (click)="updateStatusCompleted(i)" [disabled]="a.status==='completed'" >Completed</button>
+          </mat-card-actions>
+
+          <!-- <mat-form-field>
+            <mat-label>change status:</mat-label>
+            <mat-select formControlName="status">
+              
+                <mat-option value="cancelled">Cancel Appointment</mat-option>
+                <mat-option value="confirmed">Confirmed</mat-option>
+                
+            </mat-select>
+          </mat-form-field> -->
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  

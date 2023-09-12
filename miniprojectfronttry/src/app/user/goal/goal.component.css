@@ -1,0 +1,36 @@
+
+.nice-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  
+
+  .nice-table thead {
+    background-color: #f2f2f2;
+  }
+  
+  .nice-table th,
+  .nice-table td {
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .nice-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+
+  .nice-table button {
+    background-color: #ff5733;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .nice-table button:hover {
+    background-color: #d1400d;
+  }
+  

@@ -1,0 +1,115 @@
+.form-container {
+    margin-bottom: 20px;
+    
+  }
+  .container {
+    display: flex;
+    justify-content: center; /* Horizontally center the cards */
+    align-items: center; /* Vertically center the cards */
+    height: 100vh; /* Set a minimum height to center vertically on the viewport */
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  table td {
+    padding: 5px;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .prev-button,
+  .next-button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .prev-button:disabled,
+  .next-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .page-no {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  
+  .orange-button:hover {
+    background-color: darkorange; /* Change color on hover */
+  }
+  .orange-button {
+    background-color: orange;
+    color: white;
+    padding: 10px 20px; /* Adjust padding for the button size */
+    border-radius: 5px; /* Add rounded corners to the button */
+    font-size: 16px; /* Adjust font size */
+  }
+  
+  .card-content {
+    display: flex;
+    align-items: center; /* Vertically align items */
+  }
+  
+  .text-content {
+    margin-left: 10px; /* Add spacing between image and text */
+  }
+  .listings-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .listing-item {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    max-width: 1000px;
+    max-height:750px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    align-items: center;
+  }
+  .card-content {
+    display: flex;
+    align-items: center; /* Vertically align items */
+  }
+  
+  .text-content {
+    margin-left: 10px; /* Add spacing between image and text */
+  }
+  
+
+
+  
+  .address {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .mat-form-field {
+    width: 100%; /* Set the width to 100% to make it full-width */
+  }
+
+ 
+  .long-search-bar {
+    max-width: 1000px;
+    width: 100%;
+    background-color: #fff; /* Add styling as needed */
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+  

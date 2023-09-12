@@ -1,0 +1,27 @@
+<div class="glass-container">
+    <h2 mat-dialog-title class="text-center">Login</h2>
+    <form [formGroup]="form" (submit)="login()">
+        <div mat-dialog-content style="margin-top:-1em;">
+            <mat-form-field>
+                <mat-label>Username</mat-label>
+                <input matInput type="text" formControlName="id"/>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput type="password" formControlName="password"/>
+            </mat-form-field>
+            <ng-container *ngIf="!!errMsg">
+                <br>
+                <span style="color: red">{{ errMsg }}</span>
+            </ng-container>
+            <div class="button-center" align="end">
+                <button mat-button type="button" mat-dialog-close >Cancel</button>
+                <button mat-flat-button color="primary" type="submit">Login</button>
+              </div>
+        </div>
+        <div mat-dialog-actions>
+             <a (click)="signup()"> Sign up here</a>
+        </div>
+    </form>
+</div>

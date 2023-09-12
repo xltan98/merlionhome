@@ -1,0 +1,5 @@
+.form-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px; /* Adjust the spacing between fields as needed */
+  }

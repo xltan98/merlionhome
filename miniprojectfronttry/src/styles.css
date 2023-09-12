@@ -1,0 +1,63 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', Roboto, "Helvetica Neue", sans-serif;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.glass-container {
+  margin: 1vh 1vw auto;
+}
+
+.card-icon {
+  margin-bottom: 12px; 
+  margin-top: -6px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-start {
+    text-align: start;
+}
+
+.text-end {
+    text-align: end;
+}
+
+.text-small {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.text-smaller {
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.text-emphasis {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.center-buttons {
+  display: flex;
+  justify-content: space-between;
+  max-width: 90vw;
+  width: 350px;
+  margin: auto;
+  margin-bottom: 1rem;
+}
+
