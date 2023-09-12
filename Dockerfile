@@ -28,6 +28,7 @@ RUN mvn clean package -Dmaven.test.skip=true
 
 From openjdk:20-slim
 WORKDIR /app
+
 COPY --from=mvnbuilder /app/target/server-0.0.1-SNAPSHOT.jar app.jar
 
 ENV S3_KEY_ACCESS=${S3_KEY_ACCESS}
@@ -42,4 +43,4 @@ ENV SPRING_DATASOURCE_USERNAME=${SPRING_DATASOURCE_USERNAME}
 ENV SPRING_DATASOURCE_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
 
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+CMD java -jar /app.jar
