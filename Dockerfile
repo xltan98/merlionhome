@@ -9,7 +9,14 @@ RUN ng build
 
 FROM maven:3-eclipse-temurin-20 AS mvnbuilder
 WORKDIR /app
-COPY miniprojectbackend/ .   # Copy everything from the backend directory
+COPY miniprojectfronttry/src src
+COPY miniprojectfronttry/angular.json .
+COPY miniprojectfronttry/package.json .
+COPY miniprojectfronttry/package-lock.json .
+COPY miniprojectfronttry/tsconfig.app.json .
+COPY miniprojectfronttry/tsconfig.json .
+COPY miniprojectfronttry/tsconfig.spec.json .
+
 COPY --from=angbuilder /app/dist/client /app/src/main/resources/static
 RUN mvn clean package -Dmaven.test.skip=true
 
@@ -18,7 +25,6 @@ From openjdk:20-slim
 WORKDIR /app
 COPY --from=mvnbuilder /app/target/server-0.0.1-SNAPSHOT.jar app.jar
 
-# Environment variables
 ENV S3_KEY_ACCESS=${S3_KEY_ACCESS}
 ENV S3_KEY_SECRET=${S3_KEY_SECRET}
 ENV SENDGRID_API_KEY=${SENDGRID_API_KEY}
