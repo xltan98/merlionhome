@@ -1,14 +1,7 @@
 
 FROM node:18 AS angbuilder
 WORKDIR /app
-COPY miniprojectfronttry/ .   # Copy everything from the frontend directory
-RUN npm i -g @angular/cli
-RUN npm i
 
-RUN ng build
-
-FROM maven:3-eclipse-temurin-20 AS mvnbuilder
-WORKDIR /app
 COPY miniprojectfronttry/src src
 COPY miniprojectfronttry/angular.json .
 COPY miniprojectfronttry/package.json .
@@ -17,7 +10,19 @@ COPY miniprojectfronttry/tsconfig.app.json .
 COPY miniprojectfronttry/tsconfig.json .
 COPY miniprojectfronttry/tsconfig.spec.json .
 
+RUN npm i -g @angular/cli
+RUN npm i
+
+RUN ng build
+
+FROM maven:3-eclipse-temurin-20 AS mvnbuilder
+WORKDIR /app
+COPY miniprojectbackend/miniprojectbackend/src src
+COPY miniprojectbackend/miniprojectbackend/mvnw mvnw
+COPY miniprojectbackend/miniprojectbackend/pom.xml .
 COPY --from=angbuilder /app/dist/client /app/src/main/resources/static
+
+
 RUN mvn clean package -Dmaven.test.skip=true
 
 
@@ -36,5 +41,5 @@ ENV SPRING_DATASOURCE_URL=${SPRING_DATASOURCE_URL}
 ENV SPRING_DATASOURCE_USERNAME=${SPRING_DATASOURCE_USERNAME}
 ENV SPRING_DATASOURCE_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
 
-# Entrypoint
+
 ENTRYPOINT ["java", "-jar", "app.jar"]
