@@ -39,7 +39,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         try {
             requestUserId = request.getRequestURI().split("/")[4];
         } catch (IndexOutOfBoundsException e) {
-            // do nothing, there is no shop id specified
+          
         }
 
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
@@ -51,8 +51,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             UserDetails userDetails = userDetailsSvc.loadUserByUsername(username);
 
             if (jwtUtil.validateToken(token, userDetails)) {
-                // additional step of validating the UserId in path & jwt are for the same
-                // account
+               
                 if (requestUserId == null || (requestUserId != null && requestUserId.equalsIgnoreCase(username))) {
                     UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails,
                             null, userDetails.getAuthorities());
