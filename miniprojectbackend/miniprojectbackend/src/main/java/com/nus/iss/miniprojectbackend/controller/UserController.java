@@ -52,28 +52,7 @@ public class UserController {
         return ResponseEntity.ok(message);
 
     }
-    // http://localhost:4200/api/user/twat
-    // @GetMapping(path="/{userId}")
-    // public ResponseEntity<String>getUserDetails(@PathVariable String userId,@RequestBody String payload){
-
-    //     if(!uRepo.isValidUser(userId)){
-    //         return ControllerUtil.badRequest("Invalid user id");
-    //     }
-    //     try{
-    //         Users u =objMapper.readValue(payload,Users.class);
-    //         uRepo.updateUserDetails(u);
-    //         return ControllerUtil.ok("{}");
-    //     }catch(JsonProcessingException e){
-    //         e.printStackTrace();
-    //         return ControllerUtil.badRequest("Invalid json");
-    //     }catch(UserException e){
-    //         e.printStackTrace();
-    //         return ControllerUtil.internalServerError(e.getMessage());
-    //     }
-        
-        
-    // }
-
+   
       @GetMapping(path="/open/{userId}")
     public ResponseEntity<String>getUserDetails(@PathVariable String userId) throws JsonProcessingException{
 
