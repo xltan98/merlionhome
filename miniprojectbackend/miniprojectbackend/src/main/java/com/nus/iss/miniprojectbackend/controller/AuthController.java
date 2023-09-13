@@ -121,11 +121,6 @@ public class AuthController {
         return ok(Json.createObjectBuilder().add("status", "success"));
     }
 
-    // @PostMapping("/logout")
-    // public ResponseEntity<String> logoutShop() {
-    //     // clear JWT
-    //     return ok("{}");
-    // }
 
     @GetMapping("/validate-login")
     public ResponseEntity<String> validateLogin(HttpServletRequest request) {
@@ -134,9 +129,5 @@ public class AuthController {
                 .add("userId", jwtUtil.extractUsername(request)));
     }
 
-    // @GetMapping("/info")
-    // public ResponseEntity<String>getRole(@PathVariable String userId){
-        
-    //     return 
-    // }
+
 }
