@@ -58,33 +58,6 @@ public class DBQueries {
                         SELECT * FROM usersaving WHERE user_id=?
                         """;
 
-        public static final String SQL_MENU_UPDATE_PRODUCT_IMAGE = """
-                        UPDATE products SET
-                        image_url = ?
-                        WHERE id = ?
-                        """;
-
-        public static final String SQL_MENU_UPDATE_PRODUCT_MODIFIER = """
-                        UPDATE product_modifiers SET
-                        name = ?,
-                        min_required = ?,
-                        max_allowed = ?
-                        WHERE id = ?
-                        """;
-
-        public static final String SQL_MENU_UPDATE_PRODUCT_MODIFIER_OPTION = """
-                        UPDATE product_modifier_options SET
-                        name = ?,
-                        additional_price = ?
-                        WHERE id = ?
-                        """;
-
-        public static final String SQL_ORDER_INSERT_PAYMENT = """
-                        INSERT INTO payments (
-                            shop_id, order_id, payment_mode, external_payment_id, external_payment_request_id, paid_amount, timestamp
-                        ) VALUES (?, ?, ?, ?, ?, ?, ?)
-                        """;
-
         public static final String SQL_USER_GET_DETAILS = """
                         SELECT *
                         FROM user
@@ -107,18 +80,5 @@ public class DBQueries {
                         id = ?;
                         """;
 
-        public static final String SQL_SHOP_INSERT_USER = """
-                        INSERT INTO user (id, name, phone, email, password,role)
-                        VALUES (?, ?, ?, ?, ?,?);
-                        """;
 
-        public static final String SQL_SHOP_GET_SAMPLE = """
-                        SELECT shops.id as id, shops.name as name, COUNT(products.id) as num_products
-                        FROM shops
-                        RIGHT JOIN products ON shops.id = products.shop_id
-                        GROUP BY shops.id
-                        HAVING COUNT(products.id) > 3
-                        ORDER BY num_products DESC
-                        LIMIT 10;
-                        """;
 }
