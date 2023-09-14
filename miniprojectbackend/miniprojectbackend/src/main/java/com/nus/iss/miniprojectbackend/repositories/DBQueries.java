@@ -79,7 +79,7 @@ public class DBQueries {
                         WHERE
                         id = ?;
                         """;
-          public static final String SQL_USER_INSERT_USER = """
+          public static final String SQ_INSERT_USER = """
                         INSERT INTO user (id, name, phone, email, password,role)
                         VALUES (?, ?, ?, ?, ?,?);
                         """;
