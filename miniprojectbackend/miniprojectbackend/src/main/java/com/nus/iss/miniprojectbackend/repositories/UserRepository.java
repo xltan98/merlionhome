@@ -72,12 +72,12 @@ public class UserRepository {
     }
 
     public void save(UserAccount acc) {
-        jdbcTemplate.update(SQL_SHOP_INSERT_USER, acc.getId(), acc.getName(), acc.getPhone(), acc.getEmail(),
+        jdbcTemplate.update(SQL_INSERT_USER, acc.getId(), acc.getName(), acc.getPhone(), acc.getEmail(),
                  acc.getPassword(),acc.getRole());
     }
 
-    public void changePassword(String shopId, String newPassword) {
-        jdbcTemplate.update(SQL_USER_CHANGE_PASSWORD, newPassword, shopId);
+    public void changePassword(String userId, String newPassword) {
+        jdbcTemplate.update(SQL_USER_CHANGE_PASSWORD, newPassword, userId);
     }
 
     public UserAccount findFirstById(String username) {
@@ -94,10 +94,7 @@ public class UserRepository {
         }
         return null;
     }
-    // public static final String SQL_INSERT_IDEAL_HOME = """
-    //     INSERT INTO home (user_id, year, town, flat_type, storey_range,floor_area_sqm, flat_model, remaining_lease,predicted_value) VALUES
-    //     (?, ?, ?, ?, ?, ?, ?,?,?)
-    //     """;
+  
     public Integer insertUserGoal(UsersGoal g){
 
          KeyHolder generatedKeyHolder = new GeneratedKeyHolder();
@@ -211,45 +208,8 @@ public class UserRepository {
     }
 
 
-    //  List<UsersGoal> ugl= new ArrayList<>();
+   
 
-    //     SqlRowSet rs = jdbcTemplate.queryForRowSet(SQL_FIND_HOME_BY_ID,userId);
-        
-    //     while(rs.next()){
-    //         UsersGoal ug = new UsersGoal();
-    //         ug.setId(rs.getInt("id"));
-    //         ug.setUserId(rs.getString("user_id"));
-    //         ug.setYear(rs.getInt("year"));
-    //         ug.setTown(rs.getString("town"));
-    //         ug.setFlatType(rs.getString("flat_type"));
-    //         ug.setStoreyRange(rs.getString("storey_range"));
-    //         ug.setFloorAreaSqm(rs.getInt("floor_area_sqm"));
-    //         ug.setFlatModel(rs.getString("flat_model"));
-    //         ug.setRemainingLeaseYear(rs.getInt("remaining_lease"));
-    //         ug.setPredictedValue(rs.getDouble("predicted_value"));
-
-    //         ugl.add(ug);
-    //     }
-
-       
-    // public List<UsersGoal> findHomeById(String userId){
-    //     List<UsersGoal> homes=jdbcTemplate.query(SQL_FIND_HOME_BY_ID,BeanPropertyRowMapper.newInstance(UsersGoal.class),userId);
-    //     return homes;
-    // }
-
-    // public List<Users> getSampleShops() {
-    //     SqlRowSet rs = jdbcTemplate.queryForRowSet(SQL_SHOP_GET_SAMPLE);
-    //     List<Users> results = new LinkedList<>();
-
-    //     while(rs.next()) {
-    //         Users s = new Users();
-    //         s.setId(rs.getString("id"));
-    //         s.setName(rs.getString("name"));
-    //         results.add(s);
-    //     }
-
-    //     return results;
-    // }
 
     
 }
